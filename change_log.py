@@ -92,6 +92,8 @@ def get_artf(line):
     return (None, None)
 
 def check_end(record):
+    if record.commit_text is None:
+        return False
     if "--end-commit" in sys.argv:
         idx = sys.argv.index("--end-commit")
         return sys.argv[idx + 1] == record.commit
